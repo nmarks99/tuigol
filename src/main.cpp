@@ -1,6 +1,6 @@
 #include <ncurses.h>
 #include <iostream>
-#include "include/helpers.hpp" 
+#include "../include/helpers.hpp" 
 
 int main(int argc, char **argv) {
    
