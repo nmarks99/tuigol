@@ -8,7 +8,7 @@ The only real dependency is `ncurses`. To install ncurses on Ubuntu, run
 sudo apt install libncurses5-dev libncursesw5-dev
 ```
 If you are using another distribution besides Ubuntu, look up how to install 
-ncurses with you package manager. If you are on Mac or Windows ¯\_(ツ)_/¯.
+ncurses with you package manager. If you are on Mac or Windows  ¯\_(ツ)_/¯.
 
 Technically another dependecy is a terminal emulator capable of displaying ncurses stuff 
 but every modern terminal should be more than capable of running this program properly.
