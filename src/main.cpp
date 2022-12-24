@@ -1,4 +1,3 @@
-// :CocCommand clangd.install
 #include <iostream>
 #include <ncurses.h>
 #include <cmath>
@@ -107,24 +106,22 @@ class Universe {
 };
 
 
-int get_neighbors(Matrix M, int i, int j) {
-    
-    return 1;
-}
+// int get_neighbors(Matrix M, int i, int j) {
+    //
+    // return 1;
+// }
 
 int main(int argc, char **argv) {
     
-    // Graphics gr;
-    // while (true) {
-        // int i = 10;
-        // for (i; i <= 50; i++) {
-            // gr.draw(10,i);
-            // usleep(25000);
-            // gr.clear_yx(10,i);
-        // }
-    // }
-
-
+    Graphics gr;
+    while (true) {
+        int i = 10;
+        for (i; i <= 50; i++) {
+            gr.draw(10,i);
+            usleep(25000);
+            gr.clear_yx(10,i);
+        }
+    }
 
     gr.destroy();
 
