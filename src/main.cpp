@@ -4,23 +4,29 @@
 #include <vector>
 #include <unistd.h>
 #include <assert.h> 
+#include <time.h>
 
-// percentage of terminal height/width to use for the game
-#define GAME_SIZE 0.6
-#define ALIVE_CHAR 'o'
-#define DEAD_CHAR ' '
+#define GAME_SIZE 0.8 // percentage of terminal window to take up with game
+#define ALIVE_CHAR 'o' // character representing living cells
+#define DEAD_CHAR ' ' // character representing dead cells
+#define REFRESH_RATE 20 // rate at which to refresh the game
+#define USEC 1000000 
 
 class Universe {
     
     private:
 
-        std::vector<std::vector<int>> init(int rows, int cols, int value=0) {
+        std::vector<std::vector<int>> init(int rows, int cols) {
             std::vector<std::vector<int>> vec(
                     rows,
-                    std::vector<int> (cols, value)
-            ) ;
+                    std::vector<int> (cols, 0)
+            );
             return vec;
         }
+        
+
+
+
 
     public:
 
@@ -106,8 +112,19 @@ class Universe {
 
 
         // Class constructor. Calls init to construct the vector<vector<int>>
-        Universe(int rows, int cols, int value=1){
-            vec = init(rows, cols, value);
+        Universe(int rows, int cols, bool randomize=false){
+            vec = init(rows, cols);
+
+            if (randomize) {
+                srand(time(NULL));
+                int val;
+                for(int i = 0; i < vec.size(); i++) {
+                    for(int j = 0; j < vec[i].size(); j++) {
+                        val = rand() % 2;
+                        vec[i][j] = val;
+                    }
+                }
+            }
         }
     
 };
@@ -189,6 +206,7 @@ class Graphics {
         // Class constructor
         Graphics() {
             init();
+
         }
 
 };
@@ -196,26 +214,28 @@ class Graphics {
 
 
 int main(int argc, char **argv) {
-    
-    Graphics gr;
-    // int rows = gr.bdr_height;
-    Universe uni(4,4,0);
-    
-    uni.vec[1][2] = 1; 
-    uni.vec[1][0] = 1;
-    uni.vec[1][1] = 1;
-    uni.vec[0][1] = 1;
-    uni.vec[0][0] = 1;
-    uni.vec[2][0] = 1;
-    
+   
+    // initialize graphics 
+    Graphics gr; 
+
+    int rows = gr.bdr_height;
+    Universe uni(rows,rows,true);
+
     gr.draw_universe(uni);
-    int nln = uni.get_neighbors(1,1);
-    uni.next_gen(); 
     getch();
-    gr.draw_universe(uni);
 
+    int iterations = 200;
+    int k = 0;
+    while (k < iterations) {
+        
+        gr.draw_universe(uni);
+        usleep(1000000/REFRESH_RATE);
+        uni.next_gen();
 
-     
+        k++;
+
+    }
+
     getch();
     gr.destroy();
 
