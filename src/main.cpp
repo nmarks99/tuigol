@@ -7,6 +7,8 @@
 
 // percentage of terminal height/width to use for the game
 #define GAME_SIZE 0.6
+#define ALIVE_CHAR 'o'
+#define DEAD_CHAR ' '
 
 class Universe {
     
@@ -71,9 +73,39 @@ class Universe {
 
         }
 
+        void next_gen() {
+            int N = vec.size();
+            
+            for (int i=1; i < N-1; i++) {
+                for (int j=1; j < N-1; j++) {
+
+                    int nln = 0;
+                    int cell = vec[i][j];
+                    nln = get_neighbors(i,j);
+
+                    // If cell is alive
+                    if (cell == 1) {
+                        if (nln == 0 || nln == 1 || nln >= 4) {
+                            vec[i][j] = 0; // cell dies
+                        }
+                        else if (nln == 2 || nln ==3) {
+                            vec[i][j] = 1; // cell lives
+                        }
+                    }
+
+                    // If cell is dead
+                    if (cell == 0) {
+                        if (nln == 3) {
+                            vec[i][j] = 1; // cell lives
+                        }
+                    }
+
+                }
+            }
+        }
+
 
         // Class constructor. Calls init to construct the vector<vector<int>>
-        // 111 = 'o'
         Universe(int rows, int cols, int value=1){
             vec = init(rows, cols, value);
         }
@@ -140,10 +172,10 @@ class Graphics {
             for(i = 0; i < myvec.size(); i++) {
                 for(j = 0; j < myvec[i].size(); j++)
                     if (myvec[i][j] == 0) {
-                        draw(i+1, (2*j)+1, 'd');
+                        draw(i+1, (2*j)+1, DEAD_CHAR);
                     }
                     else if (myvec[i][j] == 1) {
-                        draw(i+1, (2*j)+1, 'a');
+                        draw(i+1, (2*j)+1, ALIVE_CHAR);
                     }
             }
         }
@@ -163,20 +195,11 @@ class Graphics {
 
 
 
-
-
-// int get_neighbors(Matrix M, int i, int j) {
-    //
-    // return 1;
-// }
-//
-
-
 int main(int argc, char **argv) {
     
-    // Graphics gr;
+    Graphics gr;
     // int rows = gr.bdr_height;
-    Universe uni(3,3,0);
+    Universe uni(4,4,0);
     
     uni.vec[1][2] = 1; 
     uni.vec[1][0] = 1;
@@ -184,16 +207,17 @@ int main(int argc, char **argv) {
     uni.vec[0][1] = 1;
     uni.vec[0][0] = 1;
     uni.vec[2][0] = 1;
-
-
-    uni.display();
-
+    
+    gr.draw_universe(uni);
     int nln = uni.get_neighbors(1,1);
-    std::cout << nln << std::endl;
-     
+    uni.next_gen(); 
+    getch();
+    gr.draw_universe(uni);
 
-    // getch();
-    // gr.destroy();
+
+     
+    getch();
+    gr.destroy();
 
 
 
