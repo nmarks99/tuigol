@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <assert.h> 
 
+// percentage of terminal height/width to use for the game
+#define GAME_SIZE 0.6
 
 class Universe {
     
@@ -30,6 +32,45 @@ class Universe {
                 std::cout << std::endl;
             }
         }
+
+        int get_neighbors(int rownow, int colnow) {
+
+            int rowup = rownow - 1;
+            int rowdown = rownow + 1;
+            
+            int nln = 0; // number of living neighbors
+            
+            // Check current row
+            int cell = vec[rownow][colnow-1];
+            if (cell == 1){
+                nln +=1;
+            }
+            cell = vec[rownow][colnow+1];
+            if (cell == 1){
+                nln += 1;
+            }
+
+            // check row above
+            for (int i = colnow-1; i < colnow+2; i++) {
+
+                cell = vec[rowup][i];
+                if (cell == 1){
+                    nln += 1;
+                }
+            }
+
+            // check row below
+            for (int i = colnow-1; i < colnow+2; i++) {
+                cell = vec[rowdown][i];
+                if (cell == 1){
+                    nln += 1;
+                }
+            }
+
+            return nln;
+
+        }
+
 
         // Class constructor. Calls init to construct the vector<vector<int>>
         // 111 = 'o'
@@ -64,7 +105,7 @@ class Graphics {
             int x_max, y_max;
             getmaxyx(stdscr, y_max, x_max);
              
-            bdr_height = std::floor(y_max * 0.3);
+            bdr_height = std::floor(y_max * GAME_SIZE);
             bdr_width = bdr_height * 2;
             win = newwin(
                     bdr_height+2,
@@ -133,14 +174,26 @@ class Graphics {
 
 int main(int argc, char **argv) {
     
-    Graphics gr;
-    int rows = gr.bdr_height;
-    Universe uni(rows,rows);
-    // auto myvec = uni.vec;
-    gr.draw_universe(uni);
+    // Graphics gr;
+    // int rows = gr.bdr_height;
+    Universe uni(3,3,0);
+    
+    uni.vec[1][2] = 1; 
+    uni.vec[1][0] = 1;
+    uni.vec[1][1] = 1;
+    uni.vec[0][1] = 1;
+    uni.vec[0][0] = 1;
+    uni.vec[2][0] = 1;
 
-    getch();
-    gr.destroy();
+
+    uni.display();
+
+    int nln = uni.get_neighbors(1,1);
+    std::cout << nln << std::endl;
+     
+
+    // getch();
+    // gr.destroy();
 
 
 
