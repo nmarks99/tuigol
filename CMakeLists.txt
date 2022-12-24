@@ -1,5 +1,8 @@
 cmake_minimum_required(VERSION 3.22.1)
 project(tuigol)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 include_directories(include)
 
 find_package(Curses REQUIRED)
