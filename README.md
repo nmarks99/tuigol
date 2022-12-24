@@ -1,2 +1,30 @@
 # Terminal UI (tui) Game of Life (gol)
 Neither the first nor the last implementation of Conway's Game of Life in your terminal.
+
+## Dependencies
+
+The only real dependency is `ncurses`. To install ncurses on Ubuntu, run 
+```
+sudo apt install libncurses5-dev libncursesw5-dev
+```
+If you are using another distribution besides Ubuntu, look up how to install 
+ncurses with you package manager. If you are on Mac or Windows ¯\_(ツ)_/¯.
+
+Technically another dependecy is a terminal emulator capable of displaying ncurses stuff 
+but every modern terminal should be more than capable of running this program properly.
+
+## Usage
+1. Clone the repo
+```
+git clone https://github.com/nmarks99/tuigol.git
+```
+2. Run the following to build the project
+```
+mkdir build 
+cd build
+cmake ..
+make
+```
+3. In the newly created build directory there should be an executable called `tuigol`
+which you can run to start the program.
+
