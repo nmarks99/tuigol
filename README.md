@@ -3,12 +3,14 @@ Neither the first nor the last implementation of Conway's Game of Life in your t
 
 ## Dependencies
 
-The only real dependency is `ncurses`. To install ncurses on Ubuntu, run 
+The only real dependencies are `ncurses` and a C++ compiler.
+To install ncurses on Ubuntu, run 
 ```
 sudo apt install libncurses5-dev libncursesw5-dev
 ```
-If you are using another distribution besides Ubuntu, look up how to install 
-ncurses with you package manager. If you are on Mac or Windows ¯\_(ツ)_/¯.
+If you are using another Linux distribution besides Ubuntu, look up how to install 
+ncurses with you package manager. On Linux you should have GCC preinstalled.
+If you are on Mac or Windows ¯\_(ツ)_/¯.
 
 Technically another dependecy is a terminal emulator capable of displaying ncurses stuff 
 but every modern terminal should be more than capable of running this program properly.
@@ -18,7 +20,7 @@ but every modern terminal should be more than capable of running this program pr
 ```
 git clone https://github.com/nmarks99/tuigol.git
 ```
-2. Run the following to build the project
+2. Run the following in the root directory of the project to build it 
 ```
 mkdir build 
 cd build
