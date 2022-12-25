@@ -1,10 +1,6 @@
 #include "gol.h"
 #include "graphics.h"
 
-#define USEC 1000000  // microseconds in a second
-#define ITERATIONS 100
-
-
 int main(int argc, char **argv) {
    
     // initialize graphics 

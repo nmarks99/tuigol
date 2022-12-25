@@ -3,6 +3,7 @@
 
 void Graphics::draw_border(WINDOW *win) {
     box(win, 0, 0);
+    mvwprintw(win, 0, bdr_width/2 - 6, " Game of Life ");
     wrefresh(win);
 }
         
@@ -28,11 +29,11 @@ void Graphics::init() {
 
     refresh(); 
 
-    draw_border(win);
-    mvwprintw(win, 0, bdr_width/2 - 6, " Game of Life ");
+    if (DRAW_BORDER) {
+        draw_border(win);
+    }
     wrefresh(win);
 
-    getch();
 }
 
 void Graphics::clear_yx(int y, int x) {

@@ -19,7 +19,6 @@ class Graphics {
 
         void clear_yx(int y, int x);
 
-
         void draw(int y, int x, int ch);
 
         void draw_universe(Universe uni);
