@@ -1,5 +1,6 @@
 # Terminal UI (tui) Game of Life (gol)
-Neither the first nor the last implementation of Conway's Game of Life in your terminal.
+## Neither the first nor the last implementation of Conway's Game of Life in your terminal.
+
 For now the result is pretty uninteresting since the only option is to start with a 
 random initialization. Later on I plan to add a user friendly way to specify a 
 starting condition as well as define some preset conditions like the 
