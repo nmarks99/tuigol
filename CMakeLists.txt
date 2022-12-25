@@ -8,7 +8,7 @@ include_directories(${CURSES_INCLUDE_DIR})
 
 add_executable(${PROJECT_NAME}
     src/main.cpp
-    # src/gol.cpp
+    src/gol.cpp
     # src/graphics.cpp
 )
 
