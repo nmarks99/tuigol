@@ -1,7 +1,7 @@
 # Terminal UI (tui) Game of Life (gol)
 Neither the first nor the last implementation of Conway's Game of Life in your terminal.
 
-![tuigol-demo.mp4](https://raw.githubusercontent.com/nmarks99/tuigol/main/assets/tuigol-demo.mp4)
+https://user-images.githubusercontent.com/45540813/209481425-8826b8c8-1815-493a-aa97-7c193bcc582a.mp4
 
 ## Dependencies
 
