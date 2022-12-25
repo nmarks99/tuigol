@@ -41,7 +41,6 @@ void Graphics::clear_yx(int y, int x) {
     wrefresh(win);
 }
 
-
 void Graphics::draw(int y, int x, int ch) {
     mvwprintw(win, y, x, "%c", ch);
     wrefresh(win);

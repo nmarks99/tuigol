@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
     int k = 0;
     while (k < ITERATIONS) {
         gr.draw_universe(uni);
-        usleep(1000000/REFRESH_RATE);
+        usleep(USEC/REFRESH_RATE);
         uni.next_gen();
         k++;
     }

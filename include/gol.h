@@ -17,7 +17,6 @@ class Universe {
 
         void next_gen();
 
-        // Class constructor. Calls init to construct the vector<vector<int>>
         Universe(int rows, int cols, bool randomize=false);
     
 };

@@ -10,22 +10,21 @@ class Graphics {
 
         void draw_border(WINDOW *win);
 
+        void draw(int y, int x, int ch);
+        
+        void clear_yx(int y, int x);
+        
+        void init();
+
     public:
         
         int bdr_height;
         int bdr_width;
 
-        void init();
-
-        void clear_yx(int y, int x);
-
-        void draw(int y, int x, int ch);
-
         void draw_universe(Universe uni);
 
         void destroy();
         
-        // Class constructor
         Graphics();
 
 };

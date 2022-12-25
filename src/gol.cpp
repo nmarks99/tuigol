@@ -2,6 +2,11 @@
 
 // Class constructor. Calls init to construct the vector<vector<int>>
 Universe::Universe(int rows, int cols, bool randomize /*=false*/){
+    /*
+    Universe class constructor. If randomize is true, every cell
+    in the 2D vector representing the universe will be randomly
+    assigned as either 0 (living) or 1 (dead).
+    */
     vec = init(rows, cols);
 
     if (randomize) {
@@ -17,6 +22,11 @@ Universe::Universe(int rows, int cols, bool randomize /*=false*/){
 }
 
 std::vector<std::vector<int>> Universe::init(int rows, int cols) {
+    /*
+    Initializes the vector<vector<int>> representing the 
+    Conway's Game of Life universe/game board as a 2D vector
+    of zeros with the specified number of rows and columns.
+    */
     std::vector<std::vector<int>> vec(
             rows,
             std::vector<int> (cols, 0)
@@ -28,7 +38,12 @@ std::vector<std::vector<int>> Universe::init(int rows, int cols) {
 // std::vector<std::vector<int>> Universe::vec;
 
 void Universe::display() {
-    // prints the Matrix to the screen. Useful in debugging
+    /*
+    Prints the vector<vector<int>> representing the game
+    board to stdout. This is just useful for debugging 
+    and won't show if ncurses graphics have already been 
+    initialized.
+    */
     for(int i = 0; i < vec.size(); i++) {
         for(int j = 0; j < vec[i].size(); j++)
             std::cout << vec[i][j] <<" ";
@@ -37,7 +52,10 @@ void Universe::display() {
 }
 
 int Universe::get_neighbors(int rownow, int colnow) {
-
+    /*
+    Determines the number of living neighbors to a cell 
+    at the given the row and column.
+    */
     int rowup = rownow - 1;
     int rowdown = rownow + 1;
     
@@ -75,6 +93,10 @@ int Universe::get_neighbors(int rownow, int colnow) {
 }
 
 void Universe::next_gen() {
+    /*
+    Determines the universe (game board) at the next
+    generation according to the rules of the game
+    */
     int N = vec.size();
     
     for (int i=1; i < N-1; i++) {
