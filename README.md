@@ -3,13 +3,13 @@ Neither the first nor the last implementation of Conway's Game of Life in your t
 
 ## Dependencies
 
-The only real dependencies are `ncurses` and a C++ compiler.
+The only real dependencies are `ncurses`, a C++ compiler, cmake, and make.
 To install ncurses on Ubuntu, run 
 ```
 sudo apt install libncurses5-dev libncursesw5-dev
 ```
 If you are using another Linux distribution besides Ubuntu, look up how to install 
-ncurses with you package manager. On Linux you should have GCC preinstalled.
+ncurses with you package manager. On Linux you should have GCC preinstalled with cmake and make.
 If you are on Mac or Windows ¯\_(ツ)_/¯.
 
 Technically another dependecy is a terminal emulator capable of displaying ncurses stuff 
