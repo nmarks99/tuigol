@@ -6,14 +6,14 @@ class Universe {
     private:
 
         std::vector<std::vector<int>> init(int rows, int cols);
+        
+        int get_neighbors(int rownow, int colnow);
 
     public:
 
         std::vector<std::vector<int>> vec;
 
         void display();
-
-        int get_neighbors(int rownow, int colnow);
 
         void next_gen();
 
